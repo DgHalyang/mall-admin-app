@@ -14,7 +14,7 @@
       </a-breadcrumb>
     </div>
     <ul class="user-info">
-      <li>欢迎jun<a-icon type="down" /></li>
+      <li>{{$store.state.user.username}}<a-icon type="down" /></li>
       <li>退出</li>
     </ul>
   </div>
@@ -30,6 +30,7 @@ export default {
   methods: {
     toggleCollapsed() {
     //   this.collapsed = !this.collapsed;
+    // 触发vuex->actions从而触发mutations->state
       this.$store.dispatch('changeCollapsed');
     },
   },

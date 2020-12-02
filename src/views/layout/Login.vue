@@ -29,6 +29,7 @@ import api from '@/api/user';
 
 export default {
   data() {
+    // 邮箱校验规则
     const emailReg = /^[\w-]+@[\w.-]+.com$/;
     const checkEmail = (rule, value, callback) => {
       if (!value) {
@@ -66,8 +67,10 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           api.login(this.loginForm).then((res) => {
+            // resolve
             console.log(res);
             this.$message.success('登录成功');
+            this.$store.dispatch('setUserInfo', res);
             this.$router.push({
               name: 'Home',
             });
