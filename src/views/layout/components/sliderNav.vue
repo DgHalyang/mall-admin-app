@@ -14,8 +14,8 @@
       </a-breadcrumb>
     </div>
     <ul class="user-info">
-      <li>{{$store.state.user.username}}<a-icon type="down" /></li>
-      <li>退出</li>
+      <li class="username">{{$store.state.user.username}}<a-icon type="down" /></li>
+      <li class="login-out" @click="loginout">退出</li>
     </ul>
   </div>
 </template>
@@ -32,6 +32,13 @@ export default {
     //   this.collapsed = !this.collapsed;
     // 触发vuex->actions从而触发mutations->state
       this.$store.dispatch('changeCollapsed');
+    },
+    // 退出登录
+    loginout() {
+      this.$store.dispatch('logout');
+      this.$router.push({
+        name: 'Login',
+      });
     },
   },
 };
